@@ -217,7 +217,7 @@ class Router:
                 if p.dst == i: #if neighbor is the destination, then we set our path to that interface for the neighbor
                     for k in self.cost_D[i]:
                         path = k
-            self.intf_L[1].put(p.to_byte_S(), 'out', True)
+            self.intf_L[path].put(p.to_byte_S(), 'out', True)
             #given code below
             print('%s: forwarding packet "%s" from interface %d to %d' % (self, p, s, 1))
         except queue.Full: #just circling around a set instead of being routed out, breaks the system
